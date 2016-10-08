@@ -32,3 +32,16 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
 
 
 ### 集成 bootstrap.css
+
+首先安装 `bootstrap`
+``` bash
+npm install bootstrap
+```
+
+然后找到项目中的 `angular-cli.json` 配置文件。
+``` json
+"styles": [
+  "../node_modules/bootstrap/dist/css/bootstrap.css",
+  "styles.css"
+]
+```
