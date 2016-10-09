@@ -1,0 +1,11 @@
+.carousel-container {
+    overflow: hidden;
+}
+
+.carousel-wrapper {
+    position: relative;
+}
+
+.carousel-list {
+    width: 300%;
+}
