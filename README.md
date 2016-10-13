@@ -29,8 +29,76 @@ Run `ng github-pages:deploy` to deploy to Github Pages.
 ## Further help
 
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## 项目笔记
+### app.module.ts
+``` javascript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
 
+@NgModule({
+  imports: [ 
+    BrowserModule,
+    FormsModule
+  ],
+  declarations: [ AppComponent ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule {}
 
+```
+### 输入属性，常用来父容器向子容器传值
+``` html
+<!-- 父容器 app.component.html -->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+```
+``` javascript
+<!-- 子容器，hero-detail.component.ts -->
+import { Component, Input } from '@angular/core';
+
+export class HeroDetailComponent implements {
+  @Input()
+  hero: Hero;
+  
+  constructor() { }
+}
+```
+
+### 服务返回一个 Promise
+```javascript
+import { Injectable } from '@angular/core';
+import { Hero } from './hero';
+import { HEROES } from './mock-heroes';
+@Injectable()
+export class HeroService {
+  getHeroes(): Promise<Hero[]> {
+    return Promise.resolve(HEROES);
+  }
+}
+
+<!-- 使用 -->
+getHeroes(): void {
+  this.heroSerivce.getHeroes().then(heroes => this.heroes = heroes);
+}
+```
+
+### 路由配置
+``` javascript
+import { ModuleWithProviders }  from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { HeroesComponent }      from './heroes/heroes.component';
+
+const appRoutes: Routes = [
+  {
+    path: 'heroes',
+    component: HeroesComponent
+  }
+];
+
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+```
 ### 集成 bootstrap.css
 
 首先安装 `bootstrap`
