@@ -13,6 +13,7 @@ import { HeroService } from './hero.service';
 import { routing } from './app.routing';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { HighlightDirective } from './highlight.directive';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
   declarations: [ 
     AppComponent, 
     HeroDetailComponent, 
-    HeroesComponent, DashboardComponent, HeroSearchComponent 
+    HeroesComponent, DashboardComponent, HeroSearchComponent, HighlightDirective 
   ],
   providers: [
     HeroService
